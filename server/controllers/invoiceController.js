@@ -137,8 +137,7 @@ export const generateInvoicePDF = catchAsyncErrors(async (req, res, next) => {
     user: req.user._id,
   })
     .populate("items.product")
-    .populate("user", "gstNumber")
-    .populate("user", "businessName");
+    .populate("user", "gstNumber");
 
   if (!invoice) {
     return next(new ErrorHandler("Invoice not found", 404));
