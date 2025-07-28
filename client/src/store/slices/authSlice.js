@@ -164,16 +164,12 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export const register = (data) => async (dispatch) => {
   dispatch(authSlice.actions.registerRequest());
   try {
-    const res = await axios.post(
-      "http://localhost:5000/api/v1/auth/register",
-      data,
-      {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await axios.post(`${BACKEND_URL}/api/v1/auth/register`, data, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     dispatch(authSlice.actions.registerSuccess(res.data));
   } catch (error) {
     dispatch(authSlice.actions.registerFailed(error.response?.data?.message));
