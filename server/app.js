@@ -22,7 +22,11 @@ cloudinary.config({
 export const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://billcarft-ry8l.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://billcarft-ry8l.vercel.app",
+      "https://billcarft.onrender.com",
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
