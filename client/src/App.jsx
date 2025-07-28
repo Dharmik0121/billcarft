@@ -3,21 +3,31 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import OTP from './pages/OTP'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getUser } from './store/slices/authSlice'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import { getMyProducts } from './store/slices/productSlice'
+import { getMyInvoices } from './store/slices/invoiceSlice'
 
 function App() {
 
   const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
 
   useEffect(() => {
     dispatch(getUser());
     dispatch(getMyProducts());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(getMyProducts());
+      dispatch(getMyInvoices());
+    }
+  }, [dispatch, isAuthenticated]);
 
   return (
     <>

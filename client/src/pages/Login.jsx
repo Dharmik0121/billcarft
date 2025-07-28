@@ -123,7 +123,7 @@ const Login = () => {
                 {/* Left Side - Fullscreen Image */}
                 <div
                     className="hidden md:flex w-1/2 bg-cover bg-center"
-                    style={{ backgroundImage: `url('/public/main2.png')` }}
+                    style={{ backgroundImage: `url('/main2.png')` }}
                 >
                     <div className="p-2 w-[200px]">
                         <img src={logo} alt="Logo" className="w-full" />
